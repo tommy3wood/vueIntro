@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vue.js intro</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+  <div id="app">
+    <h1><marquee behavior="scroll" direction="left">{{ headerSentence }}</marquee></h1>
+    <p>{{ message }}</p>
+
+    <div>
+      <p v-if="showExtraInformation">Poops</p>
+    </div>
+
+    <div>
+      <button v-on:click="toggleInfo">Toggle more info</button>
+    </div>
+    <br>
+    <div>
+      <button v-on:click="changeMessage()">Click here for more Boogy-town news!</button>
+    </div>
+    <br>
+    <input type="text" v-model="headerSentence" v-model="message">
+    <br>
+    <br>
+    <input type="text" v-model="newFruit">
+    <button v-on:click="addFruit()">add fruit</button>
+
+    <ul>
+      <li v-for="fruit in fruits"> {{ fruit }} </li>
+    </ul>
+
+    <script src="index.js"></script>
+    <script>
+      var app = new Vue({
+        el: "#app",
+        data: {
+          message: "Mayor of Boogy-Town, Tilda Swinton's Ex!",
+          headerSentence: "Big news in Boogy-Town",
+          showExtraInformation: false,
+          fruits: ["pumpkins", "guava", "avacodos", "plums"],
+          newFruit: ""
+        },
+        methods: {
+          changeMessage: function() {
+            this.message = "Farts stink!";
+          },
+          toggleInfo: function() {
+            // if(this.showExtraInformation) {
+            //   this.showExtraInformation = false;
+            // } else {
+            // this.showExtraInformation = true;
+            this.showExtraInformation = !this.showExtraInformation
+          },
+          addFruit: function() {
+            this.fruits.push(this.cdnewFruit);
+          }
+        }
+      });
+    </script>
+
+  </div>
+
+</body>
+</html>
